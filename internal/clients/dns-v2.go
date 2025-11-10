@@ -159,7 +159,7 @@ func resolveModern(ctx context.Context, crClient client.Client, mg resource.Mode
 	switch pc := pcObj.(type) {
 	case *namespacedv1beta1.ProviderConfig:
 		pcSpec = pc.Spec
-		if pcSpec.Credentials.SecretRef != nil {
+		if pcSpec.Credentials.SecretRef != nil && pcSpec.Credentials.SecretRef.Namespace == "" {
 			pcSpec.Credentials.SecretRef.Namespace = mg.GetNamespace()
 		}
 	case *namespacedv1beta1.ClusterProviderConfig:
