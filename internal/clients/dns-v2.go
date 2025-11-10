@@ -134,7 +134,12 @@ func resolveModern(ctx context.Context, crClient client.Client, mg resource.Mode
 		return nil, errors.New(errNoProviderConfig)
 	}
 
-	pcRuntimeObj, err := crClient.Scheme().New(namespacedv1beta1.SchemeGroupVersion.WithKind(configRef.Kind))
+	requestedKind := configRef.Kind
+	if requestedKind == "" {
+		requestedKind = namespacedv1beta1.ProviderConfigGroupVersionKind.Kind
+	}
+
+	pcRuntimeObj, err := crClient.Scheme().New(namespacedv1beta1.SchemeGroupVersion.WithKind(requestedKind))
 	if err != nil {
 		return nil, errors.Wrap(err, "unknown GVK for ProviderConfig")
 	}
