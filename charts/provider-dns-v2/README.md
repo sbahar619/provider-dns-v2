@@ -17,7 +17,7 @@ A Helm chart for Crossplane provider-dns.
 | nameOverride | string | `""` |  |
 | provider.name | string | `"provider-dns"` | Name of the provider |
 | provider.runtimeConfigRef.name | string | `"dns-config"` | Name of the DeploymentRuntimeConfig object to use |
-| providerConfig | object | `{"credentials":{"secretRef":{"key":"credentials","name":"dns-creds","namespace":"crossplane-system"},"source":"Secret"},"name":"dns-default"}` | Provider authentication configuration |
+| clusterProviderConfig | object | `{"credentials":{"secretRef":{"key":"credentials","name":"dns-creds","namespace":"crossplane-system"},"source":"Secret"},"name":"dns-default"}` | Provider authentication configuration |
 | realm.kdc | string | `"dana-wdc-1.dana-dev.com"` | Name of the Kerberos Key Distribution Center server |
 | realm.name | string | `"DANA-DEV.COM"` | Name of the Kerberos Realm |
 | secret | object | `{"name":"dns-creds","password":"passw0rd","rfc":3645,"type":"Opaque","username":"dana"}` | Secret values for the provider authentication. |
