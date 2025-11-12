@@ -33,7 +33,7 @@ krb5Config:
 
 # -- Configuration to be added to the provider deployment via the DeploymentRuntimeConfig resource
 deploymentRuntimeConfig:
-  name: dns-config
+  name: dns-config-v2
   container:
     args:
     - --debug
