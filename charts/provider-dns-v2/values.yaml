@@ -55,7 +55,7 @@ deploymentRuntimeConfig:
 
 # -- ClusterProviderConfig authentication configuration
 clusterProviderConfig:
-  name: dns-v2-default-cluster
+  name: default
   credentials:
     source: Secret
     secretRef:
