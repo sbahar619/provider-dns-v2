@@ -1,0 +1,14 @@
+apiVersion: dns-v2.m.crossplane.io/v1beta1
+kind: ClusterProviderConfig
+metadata:
+  name: {{ .Values.clusterProviderConfig.name }}
+  labels:
+    {{- include "provider-dns-v2.labels" . | nindent 4 }}
+spec:
+  credentials:
+    source: {{ .Values.clusterProviderConfig.credentials.source }}
+    secretRef:
+      name: {{ .Values.clusterProviderConfig.credentials.secretRef.name }}
+      namespace: {{ .Values.clusterProviderConfig.credentials.secretRef.namespace }}
+      key: {{ .Values.clusterProviderConfig.credentials.secretRef.key }}
+
