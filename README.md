@@ -85,6 +85,20 @@ spec:
             name: krb5-config
 ```
 
+```yaml
+apiVersion: dns-v2.m.crossplane.io/v1beta1
+kind: ClusterProviderConfig
+metadata:
+  name: default
+spec:
+  credentials:
+    source: Secret
+    secretRef:
+      namespace: crossplane-system
+      name: example-creds
+      key: credentials
+```
+
 ## Configuration
 
 The provider supports both `RFC 2845` and `RFC 3645` authentication models, but was only tested with `RFC 3645`. Each authentication model has different required parameters, refer to the Terraform [provider-dns](https://registry.terraform.io/providers/hashicorp/dns/latest/docs) for more details.
@@ -129,19 +143,18 @@ stringData:
     }
 ```
 
-Then create the `ProviderConfig`:
-
+Then create the `ClusterProviderConfig`:
 ```yaml
-apiVersion: dns-v2.crossplane.io/v1beta1
-kind: ProviderConfig
+apiVersion: dns-v2.m.crossplane.io/v1beta1
+kind: ClusterProviderConfig
 metadata:
   name: default
 spec:
   credentials:
     source: Secret
     secretRef:
-      name: example-creds
       namespace: crossplane-system
+      name: example-creds
       key: credentials
 ```
 
